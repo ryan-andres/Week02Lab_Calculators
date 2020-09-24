@@ -31,12 +31,12 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-         
+            String letters = "^[A-Za-z]"; 
             String firstValue = request.getParameter("firstNumber");
             String secondValue = request.getParameter("secondNumber");
             
             
-            if(firstValue == null || firstValue.equals("") || secondValue == null || secondValue.equals("") ){
+            if(firstValue == null || firstValue.equals("") || secondValue == null || secondValue.equals("") || firstValue.matches(letters ) || secondValue.matches(letters)){
                 request.setAttribute("message", "Invalid");
         getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
                     .forward(request, response);
