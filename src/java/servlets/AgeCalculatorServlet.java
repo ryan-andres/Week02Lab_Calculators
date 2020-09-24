@@ -44,10 +44,17 @@ public class AgeCalculatorServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
                     .forward(request, response);
             return;
+            
+            } else if (userAge.matches(letters)){
+                 request.setAttribute("messageLetters", "You must enter a numeric value."); 
+    
+        getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
+                    .forward(request, response);
+            return;
    
     }else{ 
             int outputAge = Integer.parseInt(userAge);  
-             request.setAttribute("Your age is: ", outputAge + 1);
+             request.setAttribute("outputAge", outputAge + 1);
         getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
                     .forward(request, response);
             return;
